@@ -2,17 +2,32 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sinh Nhật Của Tôi</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Mobile fixes */
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+            
+            .hero-content {
+                padding-top: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Sinh Nhật Của Nhật Tân</h1>
             <nav>
-                <ul>
+                <ul class="mobile-nav">
                     <li><a href="#about">Giới Thiệu</a></li>
                     <li><a href="#invitation">Thiệp Mời</a></li>
                     <li><a href="#gallery">Hình Ảnh</a></li>

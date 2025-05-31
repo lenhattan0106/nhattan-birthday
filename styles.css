@@ -620,6 +620,33 @@ footer .container {
     .date {
         font-size: 1.2rem;
     }
+
+    /* Fix for mobile */
+    .hero {
+        padding-top: 120px; /* Tăng padding-top để nội dung không bị che khuất */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    section {
+        padding-top: 100px; /* Tăng padding-top cho tất cả các section */
+        padding-bottom: 60px;
+    }
+
+    /* Cải thiện navbar trên mobile */
+    header {
+        padding: 10px 0;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -642,6 +669,17 @@ footer .container {
     
     .hero {
         height: auto;
-        padding: 120px 0 60px;
+        padding: 130px 0 60px; /* Tăng padding-top thêm nữa cho điện thoại nhỏ */
+    }
+
+    /* Thêm khoảng cách cho nội dung chính */
+    .hero-content {
+        margin-top: 30px;
+    }
+
+    /* Làm cho menu dễ nhấn hơn trên mobile */
+    nav ul li a {
+        padding: 8px 12px;
+        display: inline-block;
     }
 } 
