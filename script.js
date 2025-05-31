@@ -34,10 +34,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
+                // Xác định offset dựa trên kích thước màn hình
+                let offset = 70;
+                if (window.innerWidth <= 768) {
+                    offset = 90;
+                }
+                if (window.innerWidth <= 480) {
+                    offset = 120;
+                }
+                
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetPosition - offset,
                     behavior: 'smooth'
                 });
+                
+                // Đóng menu mobile nếu có
+                const header = document.querySelector('header');
+                if (header.classList.contains('mobile-menu-open')) {
+                    header.classList.remove('mobile-menu-open');
+                }
             }
         });
     });
@@ -65,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
-            header.style.padding = '10px 0';
+            header.style.padding = '5px 0';
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {
-            header.style.padding = '20px 0';
+            header.style.padding = '10px 0';
             header.style.boxShadow = 'none';
         }
     });

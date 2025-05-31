@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f9f8ff;
+    padding-top: 60px; /* Thêm padding-top cho body để tránh navbar che nội dung */
 }
 
 .container {
@@ -34,11 +35,28 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    scroll-margin-top: 70px; /* Thêm scroll-margin-top để khi scroll đến section, nó không bị navbar che */
 }
 
 section.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.section-header {
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.section-header:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #ff6b95, #8e7cc3);
+    margin: 10px auto 0;
+    border-radius: 3px;
 }
 
 .btn {
@@ -87,6 +105,7 @@ header {
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+    height: auto; /* Cho phép chiều cao tự động điều chỉnh */
 }
 
 header .container {
@@ -162,13 +181,18 @@ nav ul li a:hover::after {
     background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: calc(100vh - 60px); /* Giảm chiều cao để tránh cuộn quá nhiều */
     display: flex;
     align-items: center;
     text-align: center;
-    padding-top: 80px;
     position: relative;
     overflow: hidden;
+    padding: 20px 0; /* Giảm padding */
+}
+
+.mobile-spacer {
+    height: 50px; /* Tạo khoảng trống để đẩy nội dung xuống */
+    width: 100%;
 }
 
 .hero:before {
@@ -185,6 +209,8 @@ nav ul li a:hover::after {
 .hero-content {
     position: relative;
     z-index: 1;
+    width: 100%;
+    padding: 0 15px;
 }
 
 .hero-content h2 {
@@ -592,12 +618,31 @@ footer .container {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Tăng padding cho body trên mobile */
+    }
+    
     header .container {
         flex-direction: column;
+        padding: 5px 0;
     }
     
     nav ul {
-        margin-top: 15px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .mobile-spacer {
+        height: 30px; /* Giảm khoảng cách trên mobile */
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 40px 0;
+    }
+    
+    .hero-content {
+        margin-top: 0;
     }
     
     .about-content {
@@ -614,49 +659,41 @@ footer .container {
     }
     
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-top: 0;
     }
     
     .date {
         font-size: 1.2rem;
     }
 
-    /* Fix for mobile */
-    .hero {
-        padding-top: 120px; /* Tăng padding-top để nội dung không bị che khuất */
-        height: auto;
-        min-height: 100vh;
-    }
-
     section {
-        padding-top: 100px; /* Tăng padding-top cho tất cả các section */
-        padding-bottom: 60px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        scroll-margin-top: 90px; /* Tăng scroll-margin-top trên mobile */
     }
-
-    /* Cải thiện navbar trên mobile */
-    header {
-        padding: 10px 0;
-    }
-
-    nav ul {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    nav ul li {
-        margin: 5px 10px;
+    
+    .section-header {
+        margin-bottom: 20px;
     }
 }
 
 @media (max-width: 480px) {
+    body {
+        padding-top: 110px; /* Tăng padding cho body trên điện thoại nhỏ */
+    }
+    
+    .mobile-spacer {
+        height: 10px; /* Giảm khoảng cách trên điện thoại nhỏ */
+    }
+    
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
     }
     
     nav ul li {
-        margin: 5px 10px;
+        margin: 3px 8px;
     }
     
     .countdown {
@@ -668,18 +705,22 @@ footer .container {
     }
     
     .hero {
-        height: auto;
-        padding: 130px 0 60px; /* Tăng padding-top thêm nữa cho điện thoại nhỏ */
+        padding: 20px 0;
     }
 
-    /* Thêm khoảng cách cho nội dung chính */
-    .hero-content {
-        margin-top: 30px;
+    .hero-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
     }
 
     /* Làm cho menu dễ nhấn hơn trên mobile */
     nav ul li a {
-        padding: 8px 12px;
+        padding: 8px 10px;
         display: inline-block;
+        font-size: 0.9rem;
+    }
+
+    section {
+        scroll-margin-top: 120px; /* Tăng scroll-margin-top trên điện thoại nhỏ */
     }
 } 
